@@ -1,0 +1,20 @@
+{
+  "description": "qr",
+  "main": "./index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "awesome-phonenumber": "^2.64.0",
+    "axios": "^1.13.0",
+    "baileys": "latest",
+    "body-parser": "^1.20.1",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.1",
+    "mongodb": "^6.20.0",
+    "path": "^0.12.7",
+    "phone": "3.1.30",
+    "pino": "^8.1.0",
+    "qrcode": "^1.5.3"
+  }
+}
