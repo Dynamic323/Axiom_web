@@ -1,11 +1,26 @@
 const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
+const https = require("https");
 const { connectDB } = require("./mongodb");
 
 const app = express();
 const __path = process.cwd();
 const PORT = process.env.PORT || 8000;
+
+// Add keep-alive ping
+const keepAlive = () => {
+  const url = "https://axiom-angm.onrender.com"; // Replace with your Render app URL
+  setInterval(() => {
+    https
+      .get(url, (res) => {
+        console.log("Keep-alive ping sent");
+      })
+      .on("error", (err) => {
+        console.error("Keep-alive error:", err.message);
+      });
+  }, 14 * 60 * 1000); // Ping every 14 minutes
+};
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -66,11 +81,12 @@ app.listen(PORT, async () => {
   // Connect to MongoDB on startup
   try {
     await connectDB();
-    console.log("✅ MongoDB connected successfully");
   } catch (error) {
     console.error("Failed to connect to MongoDB:", error.message);
     console.error("Please check your MONGODB_URI in .env file");
   }
+
+  keepAlive(); // Start the keep-alive pings
 });
 
 module.exports = app;
