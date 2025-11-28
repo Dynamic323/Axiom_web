@@ -2,6 +2,7 @@ const { MongoClient } = require('mongodb');
 require('dotenv').config();
 
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://kingjoahua47_db_user:EMkQbfERX10l91FI@cluster0.d8ufh2w.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+// mongodb+srv://otamereisrael8_db_user:ZWFVmIgFhRU58zVM@axiombot.fp1f9mp.mongodb.net/?appName=axiombot
 const DB_NAME = process.env.DB_NAME || 'whatsapp_sessions';
 const COLLECTION_NAME = 'sessions';
 
